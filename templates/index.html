@@ -24,13 +24,13 @@
             color: #333;
         }
         .topic-box {
-            background: #f9f9f9;
+            background: #e0f7fa; /* Light blue background */
             margin: 10px 0;
             padding: 15px;
             border-radius: 8px;
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
             font-size: 18px;
-            color: #555;
+            color: #0277bd; /* Blue text color */
             text-align: center;
         }
     </style>
@@ -49,18 +49,24 @@
                     const response = await fetch('https://scraper-three-topaz.vercel.app/api/trending'); // Replace with your actual API endpoint
                     const data = await response.json();
                     console.log(data.trending_topics);  // Log the data to verify it's correct
+                    
                     const container = document.getElementById('trending-topics');
 
                     // Clear container before adding new topics
                     container.innerHTML = '';
 
-                    // Inject each unique topic into the container
+                    // Generate HTML string for the topics
+                    let topicsHTML = '';
                     data.trending_topics.forEach(topic => {
-                        const topicBox = document.createElement('div');
-                        topicBox.className = 'topic-box';
-                        topicBox.textContent = topic;
-                        container.appendChild(topicBox);
+                        topicsHTML += `
+                            <div class="topic-box">
+                                ${topic}
+                            </div>
+                        `;
                     });
+
+                    // Inject the generated HTML into the container
+                    container.innerHTML = topicsHTML;
                 } catch (error) {
                     console.error('Error fetching trending topics:', error);
                 }
