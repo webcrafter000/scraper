@@ -1,4 +1,5 @@
-# Flask Trending Topics App
+# Twitter(X) Trending Topics   Website
+![topicsoutput](https://github.com/user-attachments/assets/c210390e-a1ef-43bc-8763-e19d5568b0ed)
 
 This is a Flask web application that scrapes trending topics from Twitter (X) using Selenium, stores the data in MongoDB, and serves it through an API. The app also provides a simple frontend to display these topics.
 
