@@ -45,7 +45,7 @@
     <script>
         async function fetchTrendingTopics() {
             try {
-                const response = await fetch('http://127.0.0.1:5000/api/trending'); // Replace with your actual API endpoint
+                const response = await fetch('https://scraper-three-topaz.vercel.app/api/trending'); // Replace with your actual API endpoint
                 const data = await response.json();
                 const container = document.getElementById('trending-topics');
 
