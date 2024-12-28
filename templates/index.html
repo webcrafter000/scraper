@@ -43,28 +43,31 @@
         </div>
     </div>
     <script>
-        async function fetchTrendingTopics() {
-            try {
-                const response = await fetch('https://scraper-three-topaz.vercel.app/api/trending'); // Replace with your actual API endpoint
-                const data = await response.json();
-                const container = document.getElementById('trending-topics');
+        document.addEventListener('DOMContentLoaded', () => {
+            async function fetchTrendingTopics() {
+                try {
+                    const response = await fetch('https://scraper-three-topaz.vercel.app/api/trending'); // Replace with your actual API endpoint
+                    const data = await response.json();
+                    console.log(data.trending_topics);  // Log the data to verify it's correct
+                    const container = document.getElementById('trending-topics');
 
-                // Clear container before adding new topics
-                container.innerHTML = '';
+                    // Clear container before adding new topics
+                    container.innerHTML = '';
 
-                // Inject each unique topic into the container
-                data.trending_topics.forEach(topic => {
-                    const topicBox = document.createElement('div');
-                    topicBox.className = 'topic-box';
-                    topicBox.textContent = topic;
-                    container.appendChild(topicBox);
-                });
-            } catch (error) {
-                console.error('Error fetching trending topics:', error);
+                    // Inject each unique topic into the container
+                    data.trending_topics.forEach(topic => {
+                        const topicBox = document.createElement('div');
+                        topicBox.className = 'topic-box';
+                        topicBox.textContent = topic;
+                        container.appendChild(topicBox);
+                    });
+                } catch (error) {
+                    console.error('Error fetching trending topics:', error);
+                }
             }
-        }
 
-        fetchTrendingTopics();
+            fetchTrendingTopics();
+        });
     </script>
 </body>
 </html>
